@@ -6,5 +6,5 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: ["gatsby-plugin-chakra-ui"],
+  plugins: [`gatsby-plugin-mdx`],
 }
