@@ -23,11 +23,13 @@
     "gatsby": "^2.18.8",
     "gatsby-plugin-chakra-ui": "^0.1.1",
     "gatsby-plugin-mdx": "^1.0.64",
+    "gatsby-plugin-postcss": "^2.1.18",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "tailwindcss": "^1.1.4"
   },
   "repository": {
     "type": "git",

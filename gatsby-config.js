@@ -6,5 +6,5 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [`gatsby-plugin-mdx`],
+  plugins: [`gatsby-plugin-mdx`, `gatsby-plugin-postcss`],
 }
