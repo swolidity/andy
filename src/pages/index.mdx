@@ -1,3 +1,12 @@
+---
+path: "/"
+date: "2020-01-01"
+title: "Andy Kay"
+---
+
+import { graphql } from "gatsby";
+import PostLink from "../components/PostLink"
+
 <div class="p-6 max-w-lg mx-auto my-0 ">
 <div class="markdown">
 
@@ -8,13 +17,9 @@ I'm a Javascript Enginner living in Maine 🌲 and this is my home on the web.
 - Email: [andykay.me@gmail.com](mailto:andykay.me@gmail.com)
 - Twitter: [iamandyk](https://twitter.com/iamandyk)
 - GitHub: [iamandyk](https://github.com/iamandyk)
+- Instagram: [fitfamandy](https://instagram.com/fitfamandy)
 - Slack: [http://bit.ly/38QeFX1](http://bit.ly/38QeFX1)
 - Resume: [https://resume.io/r/Q1AypS1rv](https://resume.io/r/Q1AypS1rv)
-
-
-
-
-
 
 </div>
 
@@ -35,5 +40,31 @@ I'm a Javascript Enginner living in Maine 🌲 and this is my home on the web.
   <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Subscribe"></input>
   
 </form>
+
+
+
+
 </div>
+
+<div>{props.data.allMdx.edges.map(edge => <PostLink key={edge.node.id} post={edge.node} />)}</div>
+
 </div>
+
+
+export const pageQuery = graphql`
+  query {
+    allMdx(sort: { order: DESC, fields: [frontmatter___date] }) {
+      edges {
+        node {
+          id
+          excerpt(pruneLength: 250)
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            path
+            title
+          }
+        }
+      }
+    }
+  }
+`
