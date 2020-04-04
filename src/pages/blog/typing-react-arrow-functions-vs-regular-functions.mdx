@@ -1,0 +1,83 @@
+---
+path: "/blog/typing-react-arrow-functions-vs-regular-functions"
+date: "2020-04-03"
+title: "Typing React Function Components With Typsescript"
+---
+
+# Typing React Arrow Functions Vs Regular Functions
+
+It took me awhile to finally grok why you can't type regular function components
+quite the same way as arrow function components. The answer is actually simple:
+you can't currently apply a type to a function declaration in Typescript. There
+is currently an open issue for this
+[here](https://github.com/Microsoft/TypeScript/issues/22063).
+
+A lot of tutorials make use of arrow functions coupled with the
+`React.FunctionComponent` type or `React.FC` for short.
+
+```jsx
+import React from "react"
+
+type UserHeaderProps = {
+  name: string,
+  username: string,
+}
+
+const UserHeader: React.FC<UserHeaderProps> = ({ name, username }) => (
+  <div>
+    <h2>{name}</h2>
+    <h5>{username}</h5>
+  </div>
+)
+
+export default UserHeader
+```
+
+If you were to define the same component using a function declaration you would
+quickly realize that there is no way to apply the `React.FC` type and so you
+will have to settle for just being able to type your parameters and the return
+type of your component.
+
+```jsx
+import React from "react"
+
+type UserHeaderProps = {
+  name: string,
+  username: string,
+}
+
+function UserHeader({ name, username }: UserHeaderProps): React.ReactElement {
+  return (
+    <div>
+      <h2>{name}</h2>
+      <h5>{username}</h5>
+    </div>
+  )
+}
+
+export default UserHeader
+```
+
+If you still want to define your React component as a regular function and
+utilize the `React.FC` type you will have to take the extra step of capturing
+your function in a variable.
+
+```jsx
+import React from "react"
+
+type UserHeaderProps = {
+  name: string,
+  username: string,
+}
+
+const UserHeader: React.FC<UserHeaderProps> = function({ name, username }) {
+  return (
+    <div>
+      <h2>{name}</h2>
+      <h5>{username}</h5>
+    </div>
+  )
+}
+
+export default UserHeader
+```
