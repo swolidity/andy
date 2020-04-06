@@ -1,7 +1,7 @@
 import React from "react"
 import { Helmet } from "react-helmet"
 
-export default function Template({ children, pageContext }) {
+export default function({ children, pageContext }) {
   const { frontmatter } = pageContext
   return (
     <div className="blog-post-container markdown p-6 mx-auto my-0">
