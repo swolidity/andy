@@ -29,10 +29,12 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
+          pages: require.resolve("./src/pages/blogTemplate.mdx"),
           default: require.resolve("./src/components/layout.js"),
         },
       },
     },
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-react-helmet`,
   ],
 }
