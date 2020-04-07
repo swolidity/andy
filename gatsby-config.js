@@ -32,6 +32,16 @@ module.exports = {
           pages: require.resolve("./src/templates/blog-template.js"),
           default: require.resolve("./src/components/layout.js"),
         },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+            },
+          },
+        ],
       },
     },
     `gatsby-plugin-postcss`,
